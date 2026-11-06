@@ -17,3 +17,5 @@ jobs:
           whoami
           helm version
           kubectl version --client
+          kubectl get nodes
+          helm list -A
