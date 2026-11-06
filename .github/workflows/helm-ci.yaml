@@ -1,0 +1,29 @@
+name: Helm CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  helm-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+
+      - name: Lint Helm Chart
+        run: helm lint .
+
+      - name: Validate Helm templates
+        run: helm template devops-lab-release .
+
+      - name: Validate dev environment
+        run: helm template devops-lab-dev . -f values-dev.yaml
