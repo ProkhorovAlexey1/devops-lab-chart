@@ -1,0 +1,19 @@
+name: Runner Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+
+    steps:
+      - name: Check runner
+        run: |
+          echo "Runner works!"
+          hostname
+          whoami
+          helm version
+          kubectl version --client
