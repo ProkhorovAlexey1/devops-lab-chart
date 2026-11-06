@@ -27,3 +27,19 @@ jobs:
 
       - name: Validate dev environment
         run: helm template devops-lab-dev . -f values-dev.yaml
+
+  deploy:
+    needs: helm-lint
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to k3s
+        run: |
+          helm upgrade --install devops-lab-release . \
+            --namespace default \
+            --wait \
+            --timeout 5m
