@@ -8,6 +8,9 @@ on:
 jobs:
   test-runner:
     runs-on: self-hosted
+    
+    env:
+      KUBECONFIG: /home/roi/.kube/config
 
     steps:
       - name: Check runner
