@@ -43,7 +43,8 @@ jobs:
           helm upgrade --install devops-lab-release . \
             --namespace default \
             --wait \
-            --timeout 5m
+            --timeout 5m \
+            --atomic
 
       - name: Verify deployment rollout
         run: |
