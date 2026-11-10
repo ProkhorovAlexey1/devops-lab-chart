@@ -44,7 +44,7 @@ jobs:
             --wait \
             --timeout 5m
 
-       - name: Verify deployment rollout
+      - name: Verify deployment rollout
         run: |
           kubectl rollout status deployment/devops-lab-release-devops-lab-chart \
             -n default \
