@@ -19,3 +19,4 @@ jobs:
           kubectl version --client
           kubectl get nodes
           helm list -A
+          kubectl get pods -A
