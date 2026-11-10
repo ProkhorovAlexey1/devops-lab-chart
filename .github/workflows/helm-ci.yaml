@@ -32,7 +32,8 @@ jobs:
     needs: helm-lint
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: self-hosted
-
+    env:
+      KUBECONFIG: /home/roi/.kube/config
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
